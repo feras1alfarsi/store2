@@ -43,33 +43,16 @@
   }
   .icon-btn:hover{ transform: translateY(-1px); }
 
+  .nav-user{
+    font-weight:700;
+    color:#111827;
+    white-space:nowrap;
+  }
+
   .badge-dot{
     position:absolute; top:-6px; left:-6px;
     background: var(--accent);
     border: 2px solid #fff;
-  }
-
-  .nav-surface{
-    background:#fff;
-    border-top: 1px solid rgba(17,24,39,.06);
-    border-bottom: 1px solid rgba(17,24,39,.06);
-  }
-  .navbar .nav-link{
-    font-weight: 700;
-    color: #111827;
-  }
-  .navbar .nav-link:hover{ color: var(--accent); }
-
-  .sticky-shadow{
-    box-shadow: 0 12px 30px rgba(0,0,0,.08);
-  }
-
-  .truncate-1{
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    line-clamp: 1;
-    -webkit-line-clamp: 1;
   }
 </style>
 
@@ -114,20 +97,33 @@
 
           {% if user.is_authenticated %}
             <!-- Logged in -->
+            <span class="nav-user">
+              مرحباً، {{ user.username }} 👋
+            </span>
+
             <div class="dropdown">
-              <button class="icon-btn dropdown-toggle" data-bs-toggle="dropdown">
-                <i class="bi bi-person-check"></i>
+              <button
+                class="icon-btn dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-person-circle"></i>
               </button>
+
               <ul class="dropdown-menu dropdown-menu-end text-end">
-                <li class="dropdown-item fw-bold">{{ user.username }}</li>
+                <li class="dropdown-item text-muted small">
+                  مسجل الدخول
+                </li>
                 <li><hr class="dropdown-divider"></li>
                 <li>
                   <a class="dropdown-item text-danger" href="{% url 'logout' %}">
+                    <i class="bi bi-box-arrow-right"></i>
                     تسجيل الخروج
                   </a>
                 </li>
               </ul>
             </div>
+
           {% else %}
             <!-- Guest -->
             <a href="{% url 'login' %}" class="btn btn-outline-dark">
@@ -138,7 +134,12 @@
             </a>
           {% endif %}
 
-          <button class="icon-btn" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas">
+          <!-- Cart -->
+          <button
+            class="icon-btn"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#cartCanvas"
+          >
             <i class="bi bi-bag"></i>
           </button>
 
