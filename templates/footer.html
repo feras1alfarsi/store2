@@ -1,0 +1,153 @@
+<!-- ============ FOOTER (Fragment) ============ -->
+<style>
+  .newsletter{
+    background: radial-gradient(1200px 300px at 20% 0%, rgba(255,59,48,.25), transparent 60%),
+                radial-gradient(900px 300px at 80% 0%, rgba(17,24,39,.25), transparent 55%),
+                #0b1220;
+    color:#fff;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+  }
+  .newsletter .form-control{
+    border-radius: 999px;
+    padding: .85rem 1rem;
+  }
+  .newsletter .btn{
+    border-radius: 999px;
+    padding: .85rem 1.1rem;
+  }
+  .footer{
+    background:#0b1220;
+    color:#e5e7eb;
+  }
+  .footer a{ color:#e5e7eb; text-decoration:none; }
+  .footer a:hover{ color:#fff; }
+  .footer .muted{ color:#9ca3af; }
+  .social-btn{
+    width:42px;height:42px;border-radius:14px;
+    display:inline-grid; place-items:center;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+  }
+  .social-btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
+</style>
+
+<section class="newsletter pt-5 pb-4">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-lg-6">
+        <h3 class="fw-bold mb-2">اشترك في النشرة ✨</h3>
+        <p class="muted mb-0">عروض حصرية + أحدث المنتجات + كوبونات خصم على بريدك.</p>
+      </div>
+      <div class="col-12 col-lg-6">
+        <form class="d-flex gap-2" onsubmit="return subscribeNewsletter(event)">
+          <input type="email" class="form-control" id="newsletterEmail" placeholder="example@email.com" required>
+          <button class="btn btn-danger" type="submit">
+            اشترك
+            <i class="bi bi-arrow-left-short"></i>
+          </button>
+        </form>
+        <small class="muted d-block mt-2">بالاشتراك أنت توافق على سياسة الخصوصية.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer pt-5">
+  <div class="container">
+    <div class="row g-4 pb-4">
+      <div class="col-12 col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="rounded-4 px-3 py-2 bg-white text-dark fw-bold">FW</span>
+          <div>
+            <div class="fw-bold">Fashion Ward</div>
+            <small class="muted">متجر ملابس يركز على الجودة والتصميم.</small>
+          </div>
+        </div>
+        <p class="muted mb-3">
+          اكتشف تشكيلات موسمية، قطع يومية أنيقة، وتخفيضات مستمرة. هدفنا: تجربة تسوق سريعة وآمنة.
+        </p>
+        <div class="d-flex gap-2">
+          <a class="social-btn" href="#" aria-label="instagram"><i class="bi bi-instagram"></i></a>
+          <a class="social-btn" href="#" aria-label="twitter"><i class="bi bi-twitter-x"></i></a>
+          <a class="social-btn" href="#" aria-label="tiktok"><i class="bi bi-tiktok"></i></a>
+          <a class="social-btn" href="#" aria-label="whatsapp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <h6 class="fw-bold">التسوق</h6>
+        <ul class="list-unstyled d-grid gap-2 mt-3">
+          <li><a href="#">جديدنا</a></li>
+          <li><a href="#">رجالي</a></li>
+          <li><a href="#">نسائي</a></li>
+          <li><a href="#">أطفال</a></li>
+          <li><a class="text-danger" href="#">التخفيضات</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <h6 class="fw-bold">خدمة العملاء</h6>
+        <ul class="list-unstyled d-grid gap-2 mt-3">
+          <li><a href="#">الشحن والتوصيل</a></li>
+          <li><a href="#">سياسة الاسترجاع</a></li>
+          <li><a href="#">الأسئلة الشائعة</a></li>
+          <li><a href="#">تتبع الطلب</a></li>
+          <li><a href="#">تواصل معنا</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-lg-3">
+        <h6 class="fw-bold">معلومات التواصل</h6>
+        <div class="d-grid gap-2 mt-3">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-geo-alt"></i>
+            <span class="muted">الرياض، المملكة العربية السعودية</span>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-telephone"></i>
+            <a href="#">0550000000</a>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-envelope"></i>
+            <a href="#">support@fashionward.sa</a>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-shield-lock"></i>
+            <span class="muted">دفع آمن عبر بوابات موثوقة</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="border-secondary-subtle">
+
+    <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center py-3">
+      <small class="muted">© <span id="footerYear"></span> Fashion Ward — جميع الحقوق محفوظة.</small>
+      <div class="d-flex flex-wrap gap-3">
+        <a class="muted" href="#">الخصوصية</a>
+        <a class="muted" href="#">الشروط</a>
+        <a class="muted" href="#">سياسة الكوكيز</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Footer year
+  (function(){
+    const y = document.getElementById("footerYear");
+    if(y) y.textContent = new Date().getFullYear();
+  })();
+
+  function subscribeNewsletter(e){
+    e.preventDefault();
+    const email = document.getElementById("newsletterEmail")?.value?.trim();
+    if(!email) return false;
+
+    // لاحقاً: اربطها بباك-إند Django
+    alert("تم الاشتراك بنجاح ✅");
+    e.target.reset();
+    return false;
+  }
+</script>

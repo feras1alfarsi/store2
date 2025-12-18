@@ -1,0 +1,469 @@
+{% load static %}
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Fashion Ward | متجر الملابس</title>
+
+  <!-- Bootstrap 5 (RTL) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#111827;
+      --accent:#ff3b30;
+      --soft:#f8fafc;
+    }
+    body{ background: #ffffff; }
+    .section-title{
+      font-weight: 900;
+      color: var(--brand);
+    }
+    .muted{ color:#6b7280; }
+
+    /* Hero */
+    .hero{
+      background:
+        radial-gradient(1200px 420px at 10% 10%, rgba(255,59,48,.18), transparent 60%),
+        radial-gradient(900px 420px at 90% 10%, rgba(17,24,39,.12), transparent 55%),
+        linear-gradient(180deg, #f8fafc, #ffffff);
+    }
+    .hero-card{
+      border: 1px solid rgba(17,24,39,.06);
+      border-radius: 28px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.08);
+      overflow: hidden;
+    }
+    .pill{
+      border-radius:999px;
+      background:#111827;
+      color:#fff;
+      padding:.45rem .85rem;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+    }
+
+    /* Category tiles */
+    .cat-tile{
+      border-radius: 24px;
+      border: 1px solid rgba(17,24,39,.06);
+      background: var(--soft);
+      overflow:hidden;
+      position:relative;
+      min-height: 160px;
+      box-shadow: 0 14px 35px rgba(0,0,0,.06);
+    }
+    .cat-tile::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(600px 220px at 20% 20%, rgba(255,59,48,.20), transparent 60%);
+      pointer-events:none;
+    }
+    .cat-tile:hover{ transform: translateY(-2px); }
+
+    /* Product card */
+    .p-card{
+      border-radius: 24px;
+      border: 1px solid rgba(17,24,39,.07);
+      box-shadow: 0 14px 35px rgba(0,0,0,.06);
+      overflow:hidden;
+      height: 100%;
+    }
+    .p-img{
+      background: linear-gradient(135deg, rgba(17,24,39,.12), rgba(255,59,48,.14));
+      height: 220px;
+      position:relative;
+    }
+    .p-badge{
+      position:absolute; top:12px; right:12px;
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: 999px;
+      padding: .35rem .7rem;
+      font-weight: 800;
+    }
+    .btn-soft{
+      background:#1118270d;
+      border: 1px solid rgba(17,24,39,.08);
+    }
+    .btn-soft:hover{ background:#11182714; }
+
+    /* Back to top */
+    #backTop{
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 18px 40px rgba(0,0,0,.18);
+      z-index: 9999;
+    }
+  </style>
+</head>
+
+<body>
+
+  {% include "header.html" %}
+
+  <!-- HERO -->
+  <section class="hero py-4 py-lg-5">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-12 col-lg-6">
+          <span class="pill mb-3"><i class="bi bi-lightning-charge"></i> خصم موسمي لفترة محدودة</span>
+          <h1 class="display-6 fw-black section-title mb-3">
+            أناقتك تبدأ من هنا — قطع مختارة بعناية لكل يوم
+          </h1>
+          <p class="muted fs-5 mb-4">
+            تشكيلات جديدة، خامات ممتازة، وتوصيل سريع داخل السعودية.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2">
+            <a href="#" class="btn btn-danger btn-lg px-4">
+              تسوّق الآن <i class="bi bi-arrow-left-short"></i>
+            </a>
+            <a href="#" class="btn btn-outline-dark btn-lg px-4">
+              مشاهدة التخفيضات
+            </a>
+          </div>
+
+          <div class="row g-2 mt-4">
+            <div class="col-6 col-md-4">
+              <div class="p-3 rounded-4 border bg-white">
+                <div class="fw-bold"><i class="bi bi-truck"></i> شحن سريع</div>
+                <small class="muted">داخل المدن الرئيسية</small>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="p-3 rounded-4 border bg-white">
+                <div class="fw-bold"><i class="bi bi-arrow-repeat"></i> استرجاع</div>
+                <small class="muted">خلال 14 يوم</small>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="p-3 rounded-4 border bg-white">
+                <div class="fw-bold"><i class="bi bi-shield-lock"></i> دفع آمن</div>
+                <small class="muted">بوابات موثوقة</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <div class="hero-card bg-white">
+            <!-- Carousel -->
+            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="p-4 p-lg-5">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                      <span class="badge text-bg-dark rounded-pill">New</span>
+                      <span class="muted">تشكيلة الشتاء</span>
+                    </div>
+                    <div class="rounded-5" style="height:320px;background:linear-gradient(135deg, rgba(17,24,39,.14), rgba(255,59,48,.18));"></div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="p-4 p-lg-5">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                      <span class="badge text-bg-danger rounded-pill">Sale</span>
+                      <span class="muted">خصومات حتى 40%</span>
+                    </div>
+                    <div class="rounded-5" style="height:320px;background:linear-gradient(135deg, rgba(255,59,48,.18), rgba(17,24,39,.10));"></div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="p-4 p-lg-5">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                      <span class="badge text-bg-light border rounded-pill">Trending</span>
+                      <span class="muted">الأكثر مبيعاً</span>
+                    </div>
+                    <div class="rounded-5" style="height:320px;background:linear-gradient(135deg, rgba(17,24,39,.12), rgba(99,102,241,.14));"></div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-3">
+        <div>
+          <h2 class="section-title mb-1">تسوّق حسب القسم</h2>
+          <div class="muted">اختصر الطريق إلى ما يناسبك</div>
+        </div>
+        <a class="btn btn-soft rounded-pill" href="#">عرض الكل</a>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-6 col-lg-3">
+          <a class="cat-tile d-block p-4 text-decoration-none text-dark" href="#">
+            <div class="fw-black fs-4">رجالي</div>
+            <div class="muted">تيشيرتات • هوديز • بناطيل</div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <a class="cat-tile d-block p-4 text-decoration-none text-dark" href="#">
+            <div class="fw-black fs-4">نسائي</div>
+            <div class="muted">فساتين • بلايز • تنانير</div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <a class="cat-tile d-block p-4 text-decoration-none text-dark" href="#">
+            <div class="fw-black fs-4">أطفال</div>
+            <div class="muted">قطنيات • طقم • ملابس يومية</div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <a class="cat-tile d-block p-4 text-decoration-none text-dark" href="#">
+            <div class="fw-black fs-4 text-danger">تخفيضات</div>
+            <div class="muted">وفر على مشترياتك</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW ARRIVALS -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="d-flex flex-wrap gap-2 justify-content-between align-items-end mb-3">
+        <div>
+          <h2 class="section-title mb-1">وصل حديثاً</h2>
+          <div class="muted">اختيارات جديدة باستمرار</div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-dark rounded-pill" onclick="showToast('تم تطبيق فلتر: الأكثر مبيعاً')">
+            <i class="bi bi-funnel"></i> فلترة
+          </button>
+          <a class="btn btn-danger rounded-pill" href="#">
+            مشاهدة المزيد <i class="bi bi-arrow-left-short"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <!-- Product -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card p-card">
+            <div class="p-img">
+              <span class="p-badge">جديد</span>
+            </div>
+            <div class="card-body">
+              <div class="fw-bold">تيشيرت قطني</div>
+              <div class="muted small">ألوان متعددة • خامة ممتازة</div>
+              <div class="d-flex align-items-center justify-content-between mt-3">
+                <div class="fw-bold">79 ر.س</div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-soft btn-sm rounded-pill" onclick="openQuickView('تيشيرت قطني', '79')">
+                    معاينة
+                  </button>
+                  <button class="btn btn-dark btn-sm rounded-pill" onclick="addToCart('تيشيرت قطني')">
+                    <i class="bi bi-bag-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card p-card">
+            <div class="p-img">
+              <span class="p-badge">-20%</span>
+            </div>
+            <div class="card-body">
+              <div class="fw-bold">هودي شتوي</div>
+              <div class="muted small">دافئ • مناسب للبرد</div>
+              <div class="d-flex align-items-center justify-content-between mt-3">
+                <div class="fw-bold">159 ر.س</div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-soft btn-sm rounded-pill" onclick="openQuickView('هودي شتوي', '159')">معاينة</button>
+                  <button class="btn btn-dark btn-sm rounded-pill" onclick="addToCart('هودي شتوي')"><i class="bi bi-bag-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card p-card">
+            <div class="p-img">
+              <span class="p-badge">الأكثر مبيعاً</span>
+            </div>
+            <div class="card-body">
+              <div class="fw-bold">فستان أنيق</div>
+              <div class="muted small">قصة مميزة • مريح</div>
+              <div class="d-flex align-items-center justify-content-between mt-3">
+                <div class="fw-bold">229 ر.س</div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-soft btn-sm rounded-pill" onclick="openQuickView('فستان أنيق', '229')">معاينة</button>
+                  <button class="btn btn-dark btn-sm rounded-pill" onclick="addToCart('فستان أنيق')"><i class="bi bi-bag-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card p-card">
+            <div class="p-img">
+              <span class="p-badge">مميز</span>
+            </div>
+            <div class="card-body">
+              <div class="fw-bold">حذاء رياضي</div>
+              <div class="muted small">خفيف • يومي</div>
+              <div class="d-flex align-items-center justify-content-between mt-3">
+                <div class="fw-bold">199 ر.س</div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-soft btn-sm rounded-pill" onclick="openQuickView('حذاء رياضي', '199')">معاينة</button>
+                  <button class="btn btn-dark btn-sm rounded-pill" onclick="addToCart('حذاء رياضي')"><i class="bi bi-bag-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Promo Banner -->
+      <div class="mt-4 p-4 p-lg-5 rounded-5 bg-white border">
+        <div class="row g-3 align-items-center">
+          <div class="col-12 col-lg-8">
+            <h3 class="fw-black mb-2">كوبون خصم: <span class="text-danger">FW10</span></h3>
+            <p class="muted mb-0">استخدم الكود واحصل على خصم 10% على أول طلب لك.</p>
+          </div>
+          <div class="col-12 col-lg-4 text-lg-start">
+            <button class="btn btn-danger btn-lg rounded-pill" onclick="copyCoupon()">نسخ الكوبون</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {% include "footer.html" %}
+
+  <!-- Back to top -->
+  <button id="backTop" class="btn btn-dark" aria-label="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Quick View Modal -->
+  <div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-5 overflow-hidden">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="qvTitle">معاينة المنتج</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="rounded-5 mb-3" style="height:220px;background:linear-gradient(135deg, rgba(17,24,39,.12), rgba(255,59,48,.14));"></div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <div class="fw-bold" id="qvName">—</div>
+              <small class="muted">وصف مختصر… (اربطها لاحقاً من Django)</small>
+            </div>
+            <div class="fw-bold" id="qvPrice">—</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-dark rounded-pill" data-bs-dismiss="modal">إغلاق</button>
+          <button class="btn btn-dark rounded-pill" onclick="addToCart(document.getElementById('qvName').textContent)">
+            <i class="bi bi-bag-plus"></i> إضافة للسلة
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-container position-fixed top-0 start-0 p-3" style="z-index: 99999;">
+    <div id="appToast" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastMsg">تم ✅</div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Back to top
+    (function(){
+      const btn = document.getElementById("backTop");
+      const onScroll = () => {
+        if(window.scrollY > 500) btn.style.display = "inline-flex";
+        else btn.style.display = "none";
+      };
+      window.addEventListener("scroll", onScroll, { passive:true });
+      onScroll();
+    })();
+
+    // Toast helper
+    function showToast(msg){
+      const el = document.getElementById("appToast");
+      const msgEl = document.getElementById("toastMsg");
+      if(!el || !msgEl) return;
+      msgEl.textContent = msg;
+      const t = bootstrap.Toast.getOrCreateInstance(el, { delay: 2200 });
+      t.show();
+    }
+
+    // Cart (front demo)
+    function addToCart(name){
+      showToast("تمت إضافة المنتج للسلة: " + name);
+    }
+
+    // Quick view
+    function openQuickView(name, price){
+      document.getElementById("qvName").textContent = name;
+      document.getElementById("qvPrice").textContent = price + " ر.س";
+      const modal = new bootstrap.Modal(document.getElementById("quickViewModal"));
+      modal.show();
+    }
+
+    // Coupon copy
+    async function copyCoupon(){
+      const code = "FW10";
+      try{
+        await navigator.clipboard.writeText(code);
+        showToast("تم نسخ الكوبون: " + code);
+      }catch(e){
+        showToast("انسخ الكوبون يدوياً: " + code);
+      }
+    }
+  </script>
+</body>
+</html>

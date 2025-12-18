@@ -1,18 +1,26 @@
 from pathlib import Path
 
+# =========================
+# المسارات الأساسية
+# =========================
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# مفتاح سري للتطوير فقط — يجب تغييره في بيئة الإنتاج
+
+# =========================
+# الإعدادات العامة
+# =========================
 SECRET_KEY = 'django-insecure-@r053ri(8g2m&*--td(uo-d7b3be1%fw&_8n*b^0)i(6+i59r@'
 
 DEBUG = True
 
-# أضف النطاقات المسموح بها عند تشغيل المشروع عبر الإنترنت
 ALLOWED_HOSTS = []
 
 
+# =========================
 # التطبيقات المثبتة
+# =========================
 INSTALLED_APPS = [
+    # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -20,16 +28,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # التطبيقات الخاصة بالمتجر
+    # Apps المشروع
     'core',
     'catalog',
     'shop',
 ]
 
+# نموذج المستخدم المخصص
 AUTH_USER_MODEL = "core.CustomUser"
 
 
-# ميدلوير
+# =========================
+# Middleware
+# =========================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -44,30 +55,49 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+# =========================
+# URLs
+# =========================
 ROOT_URLCONF = 'config.urls'
 
 
-# القوالب
+# =========================
+# Templates
+# =========================
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],  # إضافة مجلد قوالب
+
+        # ✅ مسار القوالب العام
+        'DIRS': [
+            BASE_DIR / 'templates',
+        ],
+
         'APP_DIRS': True,
+
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.i18n',  # دعم اللغة
+                'django.template.context_processors.i18n',
             ],
         },
     },
 ]
 
+
+# =========================
+# WSGI
+# =========================
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
+# =========================
 # قاعدة البيانات
+# =========================
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -76,7 +106,9 @@ DATABASES = {
 }
 
 
-# قواعد كلمات المرور
+# =========================
+# كلمات المرور
+# =========================
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -85,27 +117,39 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# اللغة – العربية
+# =========================
+# اللغة والتوقيت
+# =========================
 LANGUAGE_CODE = 'ar'
-
-# المنطقة الزمنية – الرياض
 TIME_ZONE = 'Asia/Riyadh'
 
 USE_I18N = True
 USE_TZ = True
 
 
-# الملفات الثابتة
+# =========================
+# الملفات الثابتة Static
+# =========================
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
-    BASE_DIR / "static"
+    BASE_DIR / 'static',
 ]
 
-# دعم ملفات الترجمة (لمن يريد عمل تعدد لغات مستقبلاً)
-LOCALE_PATHS = [
-    BASE_DIR / "locale"
-]
+# عند النشر فقط
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+
+# =========================
+# ملفات الرفع Media
+# =========================
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+
+# =========================
+# الترجمة
+# =========================
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]

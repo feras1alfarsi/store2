@@ -1,0 +1,294 @@
+<!-- ============ HEADER (Fragment) ============ -->
+<style>
+  :root{
+    --brand:#111827;
+    --accent:#ff3b30;
+    --muted:#6b7280;
+    --bg-soft:#f8fafc;
+  }
+
+  /* Top mini bar */
+  .topbar{
+    background: #0b1220;
+    color: #e5e7eb;
+    font-size: .9rem;
+  }
+  .topbar a{ color:#e5e7eb; text-decoration:none; }
+  .topbar a:hover{ opacity:.85; }
+
+  /* Main header */
+  .brand-logo{
+    width:44px;height:44px;border-radius:14px;
+    display:inline-grid;place-items:center;
+    background: linear-gradient(135deg, #111827, #374151);
+    color:#fff;font-weight:800;
+    box-shadow: 0 10px 25px rgba(0,0,0,.12);
+  }
+  .brand-name{ font-weight:800; letter-spacing:.3px; color:var(--brand); }
+  .search-pill .form-control{
+    border-radius:999px;
+    padding-right: 42px;
+  }
+  .search-pill .btn{
+    border-radius:999px;
+    min-width:42px;
+  }
+
+  .icon-btn{
+    width:42px;height:42px;border-radius:14px;
+    display:inline-grid;place-items:center;
+    background: #fff;
+    border: 1px solid rgba(17,24,39,.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,.06);
+    color: var(--brand);
+  }
+  .icon-btn:hover{ transform: translateY(-1px); }
+
+  .badge-dot{
+    position:absolute; top:-6px; left:-6px;
+    background: var(--accent);
+    border: 2px solid #fff;
+  }
+
+  /* Navbar */
+  .nav-surface{
+    background:#fff;
+    border-top: 1px solid rgba(17,24,39,.06);
+    border-bottom: 1px solid rgba(17,24,39,.06);
+  }
+  .navbar .nav-link{
+    font-weight: 700;
+    color: #111827;
+  }
+  .navbar .nav-link:hover{ color: var(--accent); }
+
+  /* Sticky effect */
+  .sticky-shadow{
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+  }
+
+  /* Small helpers */
+  .truncate-1{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  /* Standard property (لإسكات التحذير وتحسين التوافق) */
+  line-clamp: 1;
+
+  /* WebKit fallback */
+  -webkit-line-clamp: 1;
+}
+
+</style>
+
+<!-- Top Bar -->
+<div class="topbar py-2">
+  <div class="container">
+    <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
+      <div class="d-flex flex-wrap gap-3 align-items-center">
+        <span class="d-inline-flex align-items-center gap-2">
+          <i class="bi bi-truck"></i>
+          شحن سريع داخل السعودية
+        </span>
+        <span class="d-none d-md-inline-flex align-items-center gap-2">
+          <i class="bi bi-arrow-repeat"></i>
+          استرجاع خلال 14 يوم
+        </span>
+      </div>
+
+      <div class="d-flex gap-3 align-items-center">
+        <a href="#" class="d-inline-flex align-items-center gap-2">
+          <i class="bi bi-telephone"></i>
+          0550000000
+        </a>
+        <a href="#" class="d-none d-md-inline-flex align-items-center gap-2">
+          <i class="bi bi-whatsapp"></i>
+          واتساب
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Header -->
+<header id="mainHeader" class="bg-white">
+  <div class="container py-3">
+    <div class="row g-3 align-items-center">
+      <!-- Brand -->
+      <div class="col-12 col-lg-3 d-flex align-items-center justify-content-between">
+        <a href="/" class="text-decoration-none d-inline-flex align-items-center gap-2">
+          <span class="brand-logo">FW</span>
+          <div class="d-flex flex-column lh-sm">
+            <span class="brand-name">Fashion Ward</span>
+            <small class="text-secondary">ملابس • أناقة • عروض</small>
+          </div>
+        </a>
+
+        <!-- Mobile menu button -->
+        <button class="btn btn-outline-dark d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+
+      <!-- Search -->
+      <div class="col-12 col-lg-6">
+        <form class="search-pill position-relative">
+          <div class="input-group">
+            <input class="form-control" type="search" placeholder="ابحث عن تيشيرت، جاكيت، فستان..." aria-label="search" />
+            <button class="btn btn-dark" type="submit" aria-label="search-btn">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+          <small class="text-secondary d-none d-md-block mt-2">
+            الأكثر بحثاً: <a class="text-decoration-none" href="#">هودي</a> • <a class="text-decoration-none" href="#">شتوي</a> • <a class="text-decoration-none" href="#">أحذية</a>
+          </small>
+        </form>
+      </div>
+
+      <!-- Actions -->
+      <div class="col-12 col-lg-3">
+        <div class="d-flex gap-2 justify-content-lg-end justify-content-between align-items-center">
+          <a class="icon-btn text-decoration-none" href="#" title="حسابي">
+            <i class="bi bi-person"></i>
+          </a>
+          <a class="icon-btn text-decoration-none" href="#" title="المفضلة">
+            <i class="bi bi-heart"></i>
+          </a>
+
+          <div class="position-relative">
+            <button class="icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas" aria-controls="cartCanvas" title="السلة">
+              <i class="bi bi-bag"></i>
+            </button>
+            <span class="badge badge-dot rounded-pill"> </span>
+          </div>
+
+          <a class="btn btn-danger d-none d-lg-inline-flex align-items-center gap-2" href="#">
+            <i class="bi bi-lightning-charge"></i>
+            عروض اليوم
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <div class="nav-surface">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg py-2">
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="#">جديدنا</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">رجالي</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">تيشيرتات</a></li>
+                <li><a class="dropdown-item" href="#">هوديز</a></li>
+                <li><a class="dropdown-item" href="#">قمصان</a></li>
+                <li><a class="dropdown-item" href="#">بنطلونات</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="#">تخفيضات رجالي</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">نسائي</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">فساتين</a></li>
+                <li><a class="dropdown-item" href="#">عبايات</a></li>
+                <li><a class="dropdown-item" href="#">بلايز</a></li>
+                <li><a class="dropdown-item" href="#">تنانير</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="#">تخفيضات نسائي</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="#">أطفال</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">إكسسوارات</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">تواصل معنا</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge text-bg-light border truncate-1">
+              <i class="bi bi-shield-check me-1"></i>
+              دفع آمن 100%
+            </span>
+            <span class="badge text-bg-light border truncate-1">
+              <i class="bi bi-stars me-1"></i>
+              جودة ممتازة
+            </span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Offcanvas Menu -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="mobileMenuLabel">القائمة</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="d-grid gap-2">
+      <a class="btn btn-outline-dark" href="#">جديدنا</a>
+      <a class="btn btn-outline-dark" href="#">رجالي</a>
+      <a class="btn btn-outline-dark" href="#">نسائي</a>
+      <a class="btn btn-outline-dark" href="#">أطفال</a>
+      <a class="btn btn-outline-dark" href="#">إكسسوارات</a>
+      <a class="btn btn-danger" href="#"><i class="bi bi-lightning-charge"></i> عروض اليوم</a>
+    </div>
+    <hr>
+    <div class="d-flex gap-2">
+      <a class="btn btn-dark w-50" href="#"><i class="bi bi-person"></i> حسابي</a>
+      <a class="btn btn-outline-dark w-50" href="#"><i class="bi bi-heart"></i> المفضلة</a>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartCanvas" aria-labelledby="cartCanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="cartCanvasLabel">سلة التسوق</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column">
+    <!-- Example items (replace later with Django loop) -->
+    <div class="border rounded-4 p-3 mb-3">
+      <div class="d-flex gap-3">
+        <div class="rounded-4 bg-light" style="width:64px;height:64px;"></div>
+        <div class="flex-grow-1">
+          <div class="fw-bold truncate-1">تيشيرت قطني أسود</div>
+          <div class="text-secondary small">المقاس: L • الكمية: 1</div>
+        </div>
+        <div class="fw-bold">79 ر.س</div>
+      </div>
+    </div>
+
+    <div class="mt-auto">
+      <div class="d-flex justify-content-between mb-2">
+        <span class="text-secondary">الإجمالي</span>
+        <span class="fw-bold">79 ر.س</span>
+      </div>
+      <a href="#" class="btn btn-dark w-100 mb-2">إتمام الطلب</a>
+      <a href="#" class="btn btn-outline-dark w-100" data-bs-dismiss="offcanvas">متابعة التسوق</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Sticky shadow on scroll
+  (function(){
+    const header = document.getElementById("mainHeader");
+    if(!header) return;
+
+    const onScroll = () => {
+      if(window.scrollY > 10) header.classList.add("sticky-top","sticky-shadow");
+      else header.classList.remove("sticky-top","sticky-shadow");
+    };
+    window.addEventListener("scroll", onScroll, { passive:true });
+    onScroll();
+  })();
+</script>
