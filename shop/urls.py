@@ -1,5 +1,7 @@
 from django.urls import path
 
+app_name = "shop"
+
 urlpatterns = [
-    # سيتم إضافة المسارات لاحقاً
+    # سيتم إضافة مسارات السلة والطلبات لاحقاً
 ]
