@@ -7,17 +7,15 @@ urlpatterns = [
     # لوحة التحكم
     path('admin/', admin.site.urls),
 
-    # الصفحة الرئيسية + حسابات المستخدم
+    # الصفحة الرئيسية + تسجيل الدخول + التسجيل
     path('', include('core.urls')),
 
-    # التطبيقات
+    # التطبيقات الأخرى
     path('catalog/', include('catalog.urls')),
     path('shop/', include('shop.urls')),
 ]
 
-# =========================
 # خدمة ملفات media أثناء التطوير فقط
-# =========================
 if settings.DEBUG:
     urlpatterns += static(
         settings.MEDIA_URL,
